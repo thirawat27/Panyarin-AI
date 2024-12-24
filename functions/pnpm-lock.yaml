@@ -12,8 +12,8 @@ importers:
         specifier: ^8.0.16
         version: 8.0.16
       '@google-cloud/functions-framework':
-        specifier: ^3.4.3
-        version: 3.4.3
+        specifier: ^3.4.4
+        version: 3.4.4
       '@google-cloud/speech':
         specifier: ^6.7.0
         version: 6.7.0
@@ -105,8 +105,8 @@ packages:
     resolution: {integrity: sha512-88uZ+jLsp1aVMj7gh3EKYH1aulTAMFAp8sH/v5a9w8q8iqSG27RiWLoxSAFr/XocZ9hGiWH1kEnBw+zl3xAgNA==}
     engines: {node: '>=14.0.0'}
 
-  '@google-cloud/functions-framework@3.4.3':
-    resolution: {integrity: sha512-NR9r3cAcuE35bW+23jRrYXWY7QFwK4UlLtmf6y+JgKzplt7s50gPrROuD2yqB9JKXynXfdRAC0EwwHZ+4Q0jsQ==}
+  '@google-cloud/functions-framework@3.4.4':
+    resolution: {integrity: sha512-OVDuc9t1NrWvUbg25FClzuPDb5LCIVW65nBhG4YJHuBaSjclbMcr/OAqQsgxzmJxuR/sS+lo8HZyAcPAzJKX2A==}
     engines: {node: '>=10.0.0'}
     hasBin: true
 
@@ -1462,7 +1462,7 @@ snapshots:
       - supports-color
     optional: true
 
-  '@google-cloud/functions-framework@3.4.3':
+  '@google-cloud/functions-framework@3.4.4':
     dependencies:
       '@types/express': 5.0.0
       body-parser: 1.20.3
