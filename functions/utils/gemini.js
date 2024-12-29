@@ -17,7 +17,7 @@ class Gemini {
             googleSearchRetrieval: {
               dynamicRetrievalConfig: {
                 mode: DynamicRetrievalMode.MODE_DYNAMIC,
-                dynamicThreshold: 0.5,
+                dynamicThreshold: 0.45,
               },
             },
           },
@@ -37,7 +37,7 @@ class Gemini {
      // กำหนด parameters ที่ใช้ปรับแต่งการทำงานของโมเดล
      this.parameters = {
       temperature: 0.3,
-      top_p: 0.8,
+      top_p: 0.6,
       top_k: 40,
       maxOutputTokens: 1000,
     };
