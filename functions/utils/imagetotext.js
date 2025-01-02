@@ -23,7 +23,7 @@ class imagetotext {
         /*
             const prompt = "Extract the text from the attached image and summarize the key information in Thai. If the text in the image is in a language other than Thai, translate it to Thai first and then summarize. Please provide an interesting and relevant title for the summary. The summary should be concise, no more than 2-3 paragraphs, and clear using formal language.";
         */ 
-        const prompt = "Extract the text from the attached image and summarize the key points in Thai. If the text in the image is in a language other than Thai, translate it into Thai first before summarizing. Provide a compelling and contextually relevant title for the summary. Ensure the summary is concise, written in formal Thai, and does not exceed 2-3 paragraphs. If no text is present or the content cannot be extracted, provide a detailed and accurate description of the image instead.";
+        const prompt = "Extract the text from the attached image and summarize the key information in Thai. If the text in the image is in a language other than Thai, translate it to Thai first and then summarize. Please provide an interesting and relevant title for the summary. The summary should be concise, no more than 2-3 paragraphs, and clear using formal language.";
         const mimeType = "image/png";
         const imageParts = [{ inlineData: { data: base64Image, mimeType } }];
 
