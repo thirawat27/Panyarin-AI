@@ -23,6 +23,83 @@ const webhookCache = new NodeCache({ stdTTL: 300, checkperiod: 60 });
 // ฟังก์ชันตรวจสอบ URL
 const isUrl = (string) => validator.isURL(string, { require_protocol: true });
 
+const getSystemInfo = () => {
+  const uptimeInSeconds = os.uptime();
+  
+  // คำนวณ Uptime ในรูปแบบ 0d 9h 50m 39s
+  const days = Math.floor(uptimeInSeconds / 86400); // 86400 seconds in a day
+  const hours = Math.floor((uptimeInSeconds % 86400) / 3600); // 3600 seconds in an hour
+  const minutes = Math.floor((uptimeInSeconds % 3600) / 60); // 60 seconds in a minute
+  const seconds = Math.floor(uptimeInSeconds % 60); // remaining seconds
+
+  // คำนวณหน่วยความจำใน GB และ MB
+  const totalMemory = os.totalmem();
+  const freeMemory = os.freemem();
+  const usedMemoryGB = ((totalMemory - freeMemory) / (1024 ** 3)).toFixed(2);
+  const totalMemoryGB = (totalMemory / (1024 ** 3)).toFixed(2);
+
+  return {
+    NodeVersion: process.version, // เพิ่ม Node.js version
+    OS: `${os.type()} ${os.arch()} ${os.release()}`,
+    CPU: os.cpus()[0].model,
+    CPUThreads: os.cpus().length,
+    CPUCores: os.cpus().filter(cpu => cpu.model).length, // จำนวน CPU core
+    TotalMemory: `${totalMemoryGB} GB`,
+    UsedMemory: `${usedMemoryGB} GB`,
+    Uptime: `${days}d ${hours}h ${minutes}m ${seconds}s`, // Uptime รูปแบบใหม่
+  };
+};
+
+// ฟังก์ชันสำหรับสร้าง Flex Message จากข้อมูลระบบ
+const createSystemInfoFlex = (systemInfo) => {
+  return {
+    type: "flex",
+    altText: "ข้อมูลระบบเซิร์ฟเวอร์ 🖥️",
+    contents: {
+      type: "bubble",
+      size: "mega",
+      body: {
+        type: "box",
+        layout: "vertical",
+        contents: [
+          {
+            type: "text",
+            text: "ข้อมูลระบบเซิร์ฟเวอร์ 🖥️",
+            weight: "bold",
+            size: "xl",
+            align: "center",
+            margin: "md",
+            color: "#ffffff",
+          },
+          {
+            type: "separator",
+            margin: "md",
+          },
+          {
+            type: "box",
+            layout: "vertical",
+            margin: "lg",
+            spacing: "sm",
+            contents: [
+              { type: "text", text: `OS: ${systemInfo.OS}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `Node.js Version: ${systemInfo.NodeVersion}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `CPU: ${systemInfo.CPU}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `CPU Cores: ${systemInfo.CPUCores}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `CPU Threads: ${systemInfo.CPUThreads}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `Total Memory: ${systemInfo.TotalMemory}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `Used Memory: ${systemInfo.UsedMemory}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `Uptime: ${systemInfo.Uptime}`, color: "#ffffff", wrap: true },
+            ],
+          },
+        ],
+      },
+      styles: {
+        body: { backgroundColor: "#2e3b55" },
+      },
+    },
+  };
+};
+
 // ฟังก์ชันแปลงไฟล์ .m4a เป็น .wav โดยใช้ fluent-ffmpeg
 const convertM4aToWav = async (m4aLocalFile, wavLocalFile) => {
   return new Promise((resolve, reject) => {
@@ -577,11 +654,18 @@ export const webhook = onRequest(
           await sendWelcomeMessage(event);
         } else if (event.type === "follow") {
           await sendWelcomeFlex(event, userId);
-        } else if (event.type === "message") {
+        } else if (event.type === "message") {  
           const prompt = event.message.text?.trim() || "";
-          console.log("Prompt :", prompt);
-          const quoteToken = event.message.quoteToken;
-          await handleMessage(event, userId, prompt, quoteToken);
+
+          if (prompt === "ข้อมูลระบบ") {
+            const systemInfo = getSystemInfo(); // เรียกฟังก์ชันเพื่อดึงข้อมูลระบบ
+            const systemFlex = createSystemInfoFlex(systemInfo); // สร้าง Flex Message
+            await line.reply(event.replyToken, [systemFlex]); // ส่งข้อความ Flex กลับไป
+          } else {
+            console.log("Prompt :", prompt);
+            const quoteToken = event.message.quoteToken;
+            await handleMessage(event, userId, prompt, quoteToken);
+          }
         }
       } catch (error) {
         console.error("Error processing event: ", error);
