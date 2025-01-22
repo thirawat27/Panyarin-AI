@@ -26,31 +26,56 @@ const isUrl = (string) => validator.isURL(string, { require_protocol: true });
 const getSystemInfo = () => {
   const uptimeInSeconds = os.uptime();
   
-  // คำนวณ Uptime ในรูปแบบ 0d 9h 50m 39s
-  const days = Math.floor(uptimeInSeconds / 86400); // 86400 seconds in a day
-  const hours = Math.floor((uptimeInSeconds % 86400) / 3600); // 3600 seconds in an hour
-  const minutes = Math.floor((uptimeInSeconds % 3600) / 60); // 60 seconds in a minute
-  const seconds = Math.floor(uptimeInSeconds % 60); // remaining seconds
+  // คำนวณเวลา Uptime ในรูปแบบ 0d 9h 50m 39s
+  const days = Math.floor(uptimeInSeconds / 86400);
+  const hours = Math.floor((uptimeInSeconds % 86400) / 3600);
+  const minutes = Math.floor((uptimeInSeconds % 3600) / 60);
+  const seconds = Math.floor(uptimeInSeconds % 60);
 
-  // คำนวณหน่วยความจำใน GB และ MB
+  // คำนวณหน่วยความจำ (Memory) ด้วยวิธีที่แม่นยำ
   const totalMemory = os.totalmem();
   const freeMemory = os.freemem();
-  const usedMemoryGB = ((totalMemory - freeMemory) / (1024 ** 3)).toFixed(2);
+  const usedMemory = totalMemory - freeMemory;
+  
+  // แปลงหน่วยความจำเป็น GB และจำกัดทศนิยม 2 ตำแหน่ง
   const totalMemoryGB = (totalMemory / (1024 ** 3)).toFixed(2);
+  const usedMemoryGB = (usedMemory / (1024 ** 3)).toFixed(2);
+  const freeMemoryGB = (freeMemory / (1024 ** 3)).toFixed(2);
+  
+  // คำนวณเปอร์เซ็นต์การใช้หน่วยความจำ
+  const memoryUsagePercent = ((usedMemory / totalMemory) * 100).toFixed(1);
+
+  // รับข้อมูล CPU โดยละเอียด
+  const cpus = os.cpus();
+  const cpuModel = cpus[0].model.replace(/\s+/g, ' ').trim(); // ลบช่องว่างที่ไม่จำเป็น
+  const cpuSpeed = (cpus[0].speed / 1000).toFixed(2); // แปลงเป็น GHz
+  
+  // คำนวณโหลดเฉลี่ยของ CPU
+  const loadAvg = os.loadavg();
+  const cpuLoadPercent = (loadAvg[0] * 100 / cpus.length).toFixed(1);
 
   return {
-    NodeVersion: process.version, // เพิ่ม Node.js version
+    NodeVersion: process.version,
     OS: `${os.type()} ${os.arch()} ${os.release()}`,
-    CPU: os.cpus()[0].model,
-    CPUThreads: os.cpus().length,
-    CPUCores: os.cpus().filter(cpu => cpu.model).length, // จำนวน CPU core
-    TotalMemory: `${totalMemoryGB} GB`,
-    UsedMemory: `${usedMemoryGB} GB`,
-    Uptime: `${days}d ${hours}h ${minutes}m ${seconds}s`, // Uptime รูปแบบใหม่
+    Platform: os.platform(),
+    CPU: {
+      Model: cpuModel,
+      Speed: `${cpuSpeed} GHz`,
+      Cores: cpus.length,
+      LoadPercent: `${cpuLoadPercent}%`
+    },
+    Memory: {
+      Total: `${totalMemoryGB} GB`,
+      Used: `${usedMemoryGB} GB`,
+      Free: `${freeMemoryGB} GB`,
+      UsagePercent: `${memoryUsagePercent}%`
+    },
+    Uptime: `${days}d ${hours}h ${minutes}m ${seconds}s`,
+    SystemUptime: process.uptime().toFixed(0) + 's'
   };
 };
 
-// ฟังก์ชันสำหรับสร้าง Flex Message จากข้อมูลระบบ
+// ปรับปรุงฟังก์ชัน createSystemInfoFlex ให้แสดงข้อมูลใหม่
 const createSystemInfoFlex = (systemInfo) => {
   return {
     type: "flex",
@@ -82,13 +107,16 @@ const createSystemInfoFlex = (systemInfo) => {
             spacing: "sm",
             contents: [
               { type: "text", text: `OS: ${systemInfo.OS}`, color: "#ffffff", wrap: true },
-              { type: "text", text: `Node.js Version: ${systemInfo.NodeVersion}`, color: "#ffffff", wrap: true },
-              { type: "text", text: `CPU: ${systemInfo.CPU}`, color: "#ffffff", wrap: true },
-              { type: "text", text: `CPU Cores: ${systemInfo.CPUCores}`, color: "#ffffff", wrap: true },
-              { type: "text", text: `CPU Threads: ${systemInfo.CPUThreads}`, color: "#ffffff", wrap: true },
-              { type: "text", text: `Total Memory: ${systemInfo.TotalMemory}`, color: "#ffffff", wrap: true },
-              { type: "text", text: `Used Memory: ${systemInfo.UsedMemory}`, color: "#ffffff", wrap: true },
-              { type: "text", text: `Uptime: ${systemInfo.Uptime}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `Platform: ${systemInfo.Platform}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `Node.js: ${systemInfo.NodeVersion}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `CPU: ${systemInfo.CPU.Model}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `CPU Speed: ${systemInfo.CPU.Speed}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `CPU Cores: ${systemInfo.CPU.Cores}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `CPU Load: ${systemInfo.CPU.LoadPercent}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `Memory Total: ${systemInfo.Memory.Total}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `Memory Used: ${systemInfo.Memory.Used} (${systemInfo.Memory.UsagePercent})`, color: "#ffffff", wrap: true },
+              { type: "text", text: `Memory Free: ${systemInfo.Memory.Free}`, color: "#ffffff", wrap: true },
+              { type: "text", text: `System Uptime: ${systemInfo.Uptime}`, color: "#ffffff", wrap: true }
             ],
           },
         ],
