@@ -364,7 +364,7 @@ const manualChatbot = {
       contents: [
         {
           type: "text",
-          text: "แชทบอทนี้สามารถตอบสนองต่อความต้องการที่หลากหลายผ่านฟังก์ชันการทำงานดังนี้:",
+          text: "แชทบอทนี้สามารถตอบสนองต่อความต้องการที่หลากหลายผ่านฟังก์ชันการทำงานดังนี้ :",
           wrap: true,
           margin: "md",
         },
@@ -380,7 +380,7 @@ const manualChatbot = {
               contents: [
                 {
                   type: "text",
-                  text: "1. ตอบคำถามและค้นหาข้อมูล:",
+                  text: "1. ตอบคำถามและค้นหาข้อมูล :",
                   weight: "bold",
                   flex: 0,
                 },
@@ -398,7 +398,7 @@ const manualChatbot = {
               contents: [
                 {
                   type: "text",
-                  text: "2. สรุปเนื้อหาจากไฟล์รูปภาพ:",
+                  text: "2. สรุปเนื้อหาจากไฟล์รูปภาพ :",
                   weight: "bold",
                   flex: 0,
                 },
@@ -416,7 +416,7 @@ const manualChatbot = {
               contents: [
                 {
                   type: "text",
-                  text: "3. สรุปเนื้อหาจาก URL หรือเว็บไซต์:",
+                  text: "3. สรุปเนื้อหาจาก URL หรือเว็บไซต์ :",
                   weight: "bold",
                   flex: 0,
                 },
@@ -434,7 +434,7 @@ const manualChatbot = {
               contents: [
                 {
                   type: "text",
-                  text: "4. สรุปเนื้อหาจากข้อความ:",
+                  text: "4. สรุปเนื้อหาจากข้อความ :",
                   weight: "bold",
                   flex: 0,
                 },
@@ -452,7 +452,7 @@ const manualChatbot = {
               contents: [
                 {
                   type: "text",
-                  text: "5. ตอบโต้ด้วยข้อความเสียง:",
+                  text: "5. ตอบโต้ด้วยข้อความเสียง :",
                   weight: "bold",
                   flex: 0,
                 },
