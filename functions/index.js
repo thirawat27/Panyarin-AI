@@ -340,7 +340,7 @@ const sendWelcomeFlex = async (event, userId) => {
 
 const manualChatbot = {
   type: "flex",
-  altText: "วิธีการใช้งานแชทบอท AI",
+  altText: "วิธีการใช้งานแชทบอท AI 📚",
   contents: {
     type: "bubble",
     header: {
@@ -349,13 +349,14 @@ const manualChatbot = {
       contents: [
         {
           type: "text",
-          text: "วิธีการใช้งานแชทบอท AI",
+          text: "วิธีการใช้งานแชทบอท AI 📚",
+          align: "center",
           weight: "bold",
           size: "lg",
           color: "#FFFFFF",
         },
       ],
-      backgroundColor: "#00BFFF",
+      backgroundColor: "#7E5CAD",
     },
     body: {
       type: "box",
