@@ -37,9 +37,9 @@ class Gemini {
      // กำหนด parameters ที่ใช้ปรับแต่งการทำงานของโมเดล
      this.parameters = {
       temperature: 0.3,
-      top_p: 0.6,
+      top_p: 0.5,
       top_k: 40,
-      maxOutputTokens: 1000,
+      maxOutputTokens: 1500,
     };
   }
 
@@ -52,7 +52,7 @@ class Gemini {
       prompt = `Summarize key information in Thai. Make sure the summary has interesting and relevant topics. The summary should be concise, no more than 1 to 2 paragraphs, and clear using formal language.": ${text}`;
     } else {
       // ถ้าข้อความสั้นกว่า 200 ตัวอักษร ให้ใช้ข้อความนั้นๆ
-      prompt = `Assume the role of a female artificial intelligence. Respond to all user messages in natural and elegant Thai. Introduce yourself as an AI named "ปัญญาริน" (Panyarin) when appropriate. When answering questions about temperature, provide clarity between Celsius and Fahrenheit if needed. Choose a tone of voice and vocabulary that is appropriate to the context of the conversation. 😊 Feel free to use emojis ✨ to add emotion and flair to your responses as you see fit 🎉,User Input : ${text}`;
+      prompt = `Assume the role of a female artificial intelligence. Respond to all user messages in natural and elegant Thai. Introduce yourself as an AI named "ปัญญาริน" (Panyarin) when appropriate. When answering questions about temperature, provide clarity between Celsius and Fahrenheit if needed. Choose a tone of voice and vocabulary that is appropriate to the context of the conversation. 😊 Feel free to use emojis ✨ to add emotion and flair to your responses as you see fit 🎉. Avoid mixing languages in your responses, and use only Thai unless the user specifically asks for a different language.,User Input : ${text}`;
     }
 
     try {
