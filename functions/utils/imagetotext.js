@@ -7,7 +7,7 @@ const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 class imagetotext {
     constructor() {
         // กำหนดโมเดลที่ใช้สำหรับการสร้างเนื้อหาจาก Google Generative AI
-        this.model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
+        this.model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         // กำหนดการตั้งค่าความปลอดภัยที่ใช้ในการกรองเนื้อหาที่ไม่เหมาะสม
         this.safetySettings = [
@@ -23,7 +23,7 @@ class imagetotext {
         /*
             const prompt = "Extract the text from the attached image and summarize the key information in Thai. If the text in the image is in a language other than Thai, translate it to Thai first and then summarize. Please provide an interesting and relevant title for the summary. The summary should be concise, no more than 2-3 paragraphs, and clear using formal language.";
         */ 
-        const prompt = "Extract the text from the attached image and summarize the key information in Thai. If the text in the image is in a language other than Thai, translate it to Thai first and then summarize. Please provide an interesting and relevant title for the summary. The summary should be concise, no more than 2-3 paragraphs, and clear using formal language.";
+        const prompt = "Extract the text from the attached image and summarize the key information in Thai. If the text in the image is in a language other than Thai, first translate it into Thai before summarizing. Provide an engaging and relevant title that aligns with the content. The summary should be concise (no more than 2-3 paragraphs), use formal and clear language, avoid unnecessary interpretation, and retain all essential details.";
         const mimeType = "image/png";
         const imageParts = [{ inlineData: { data: base64Image, mimeType } }];
 
