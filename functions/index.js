@@ -487,6 +487,14 @@ const handleMessage = async (event, userId, prompt, quoteToken) => {
       {
         type: "action",
         action: {
+          type: "message",
+          label: "วันนี้วันที่เท่าไหร่? 📅",
+          text: "วันนี้วันที่เท่าไหร่",
+        },
+      },
+      {
+        type: "action",
+        action: {
           type: "cameraRoll",
           label: "เลือกรูปภาพ 🖼️",
         },
