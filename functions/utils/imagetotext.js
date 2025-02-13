@@ -7,7 +7,7 @@ const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 class imagetotext {
     constructor() {
         // กำหนดโมเดลที่ใช้สำหรับการสร้างเนื้อหาจาก Google Generative AI
-        this.model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-8b" });
+        this.model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         // กำหนดการตั้งค่าความปลอดภัยที่ใช้ในการกรองเนื้อหาที่ไม่เหมาะสม
         this.safetySettings = [

@@ -10,7 +10,7 @@ class Gemini {
     // กำหนดโมเดลที่ใช้สำหรับการสร้างเนื้อหาจาก Google Generative AI
     this.model = genAI.getGenerativeModel(
       {
-        model: "gemini-1.5-flash-8b",
+        model: "gemini-1.5-flash",
         tools: [
           {
             googleSearchRetrieval: {
@@ -36,7 +36,7 @@ class Gemini {
     // กำหนด parameters ที่ใช้ปรับแต่งการทำงานของโมเดล
     this.parameters = {
       temperature: 0.3,
-      top_p: 0.5,
+      top_p: 0.4,
       top_k: 60,
       maxOutputTokens: 1500,
     }
