@@ -10,10 +10,11 @@ class Gemini {
 
     // กำหนดการตั้งค่าความปลอดภัยสำหรับการกรองเนื้อหาที่ไม่เหมาะสม
     this.safetySettings = [
-      { category: "HARM_CATEGORY_DEROGATORY", threshold: "BLOCK_NONE" },
-      { category: "HARM_CATEGORY_VIOLENCE", threshold: "BLOCK_LOW_AND_ABOVE" },
-      { category: "HARM_CATEGORY_MEDICAL", threshold: "BLOCK_LOW_AND_ABOVE" },
-      { category: "HARM_CATEGORY_DANGEROUS", threshold: "BLOCK_HIGH_ONLY" },
+      { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
+      { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_LOW_AND_ABOVE" },
+      { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_LOW_AND_ABOVE" },
+      { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_LOW_AND_ABOVE" },
+      { category: "HARM_CATEGORY_CIVIC_INTEGRITY", threshold: "BLOCK_LOW_AND_ABOVE" }
     ];
 
     // กำหนดพารามิเตอร์สำหรับโมเดล
