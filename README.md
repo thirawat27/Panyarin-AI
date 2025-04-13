@@ -18,6 +18,7 @@ This is a research project by a third-year vocational certificate student to stu
  - [Step 2: Install Cloud Functions for Firebase](https://medium.com/firebasethailand/cloud-functions-for-firebase-2nd-gen-cdda33bbd7dd)
  
  - [Step 3: Clone the project and connect it to Firebase. After cloning the project, navigate into the project directory and run firebase login to sign in. Once signed in, use the command firebase use --add to connect to your Firebase project](https://stackoverflow.com/questions/36432458/how-do-i-switch-apps-from-the-firebase-cli)
+ - Step 4: Don’t forget to rename the file extension from .env.text to .env.
 
 
 ## License
