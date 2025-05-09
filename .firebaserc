@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "panyarin-ai-chat-bot-line"
-  }
+    "default": "panyarin-ai-chat-bot-line",
+    "panyarin-test": "panyarin-test"
+  },
+  "targets": {},
+  "etags": {}
 }
