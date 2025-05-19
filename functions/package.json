@@ -14,7 +14,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "@extractus/article-extractor": "^8.0.18",
+    "@extractus/article-extractor": "^8.0.19",
     "@google-cloud/functions-framework": "^4.0.0",
     "@google-cloud/speech": "^7.0.1",
     "@google/genai": "^0.13.0",
