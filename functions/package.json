@@ -17,7 +17,7 @@
     "@extractus/article-extractor": "^8.0.19",
     "@google-cloud/functions-framework": "^4.0.0",
     "@google-cloud/speech": "^7.1.0",
-    "@google/genai": "^0.13.0",
+    "@google/genai": "^1.0.1",
     "axios": "^1.9.0",
     "firebase-admin": "^13.4.0",
     "firebase-functions": "^6.3.2",
