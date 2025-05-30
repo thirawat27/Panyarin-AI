@@ -15,7 +15,11 @@ import path from "path";
 import os from "os";
 import fs from "fs";
 import ffmpeg from "fluent-ffmpeg";
+import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
 import PQueue from "p-queue";
+
+ffmpeg.setFfmpegPath(ffmpegInstaller.path);
+// นำเข้าโมดูลสำหรับการจัดการคิว
 
 // Instantiates a client สำหรับ Google Cloud Speech-to-Text
 const client = new speech.SpeechClient();
@@ -140,26 +144,35 @@ const createSystemInfoFlex = (systemInfo) => {
   };
 };
 
-// ฟังก์ชันแปลงไฟล์ .m4a เป็น .wav โดยใช้ fluent-ffmpeg พร้อม preset ultrafast
+// ฟังก์ชันแปลง .m4a เป็น .wav สำหรับ Google Cloud Speech-to-Text
 const convertM4aToWav = async (m4aLocalFile, wavLocalFile) => {
   return new Promise((resolve, reject) => {
     ffmpeg(m4aLocalFile)
+      .inputOptions("-y") // เขียนทับไฟล์โดยไม่ถาม
       .outputOptions("-preset ultrafast")
       .toFormat("wav")
       .audioCodec("pcm_s16le")
       .audioChannels(1)
       .audioFrequency(16000)
       .on("end", () => {
-        console.log("Conversion finished!");
+        console.log("✅ FFmpeg: Conversion finished");
+
+        // ลบไฟล์ต้นฉบับหลังแปลงสำเร็จ
+        if (fs.existsSync(m4aLocalFile)) fs.unlinkSync(m4aLocalFile);
         resolve();
       })
       .on("error", (err) => {
-        console.error("An error occurred: " + err.message);
+        console.error("❌ FFmpeg error:", err.message);
+
+        // ล้างไฟล์ชั่วคราวกรณีเกิด error
+        if (fs.existsSync(m4aLocalFile)) fs.unlinkSync(m4aLocalFile);
+        if (fs.existsSync(wavLocalFile)) fs.unlinkSync(wavLocalFile);
         reject(err);
       })
       .save(wavLocalFile);
   });
 };
+
 
 // ฟังก์ชันสำหรับ Google Cloud Speech-to-Text
 const transcribeSpeech = async (wavFilename) => {
@@ -464,7 +477,6 @@ const handleImageMessage = async (event, quoteToken, quickReply) => {
   }
 };
 
-// ฟังก์ชันสำหรับจัดการข้อความประเภท Audio
 const handleAudioMessage = async (event, quoteToken, quickReply) => {
   try {
     const messageId = event.message.id;
@@ -475,34 +487,28 @@ const handleAudioMessage = async (event, quoteToken, quickReply) => {
       ]);
       return;
     }
-    // ดึงไฟล์เสียงจาก LINE
-    const audioFile = await line.getAudio(event.message.id);
-    // บันทึกไฟล์เสียง .m4a
-    const filenameTimestamp = event.timestamp;
-    const m4aLocalFile = path.join(os.tmpdir(), filenameTimestamp + ".m4a");
+
+    const audioFile = await line.getAudio(messageId);
+    const timestamp = event.timestamp;
+    const m4aLocalFile = path.join(os.tmpdir(), `${timestamp}.m4a`);
+    const wavLocalFile = path.join(os.tmpdir(), `${timestamp}.wav`);
+
     fs.writeFileSync(m4aLocalFile, audioFile);
 
-    // แปลงไฟล์ .m4a เป็น .wav โดยใช้ fluent-ffmpeg
-    const wavLocalFile = path.join(os.tmpdir(), filenameTimestamp + ".wav");
     await convertM4aToWav(m4aLocalFile, wavLocalFile);
 
-    // แปลงเสียงเป็นข้อความด้วย Google Cloud Speech-to-Text
     const resultText = await transcribeSpeech(wavLocalFile);
-    // ส่งข้อความที่แปลงแล้วไปยัง Gemini API (โดยใช้โมดูล gemini ที่อัปเดตแล้ว)
+
+    // ลบ wav หลัง transcribe เสร็จ
+    if (fs.existsSync(wavLocalFile)) fs.unlinkSync(wavLocalFile);
+
     const geminiResponse = await queue.add(() => gemini.textOnly(resultText));
-    // ตอบกลับด้วยข้อความจาก Gemini API
-    await line.reply(
-      event.replyToken,
-      [{ type: "text", text: geminiResponse, quoteToken }],
-      quickReply
-    );
+    await line.reply(event.replyToken, [{ type: "text", text: geminiResponse, quoteToken }], quickReply);
   } catch (error) {
     console.error("เกิดข้อผิดพลาดในการประมวลผลไฟล์เสียง:", error);
-    await line.reply(
-      event.replyToken,
-      [{ type: "text", text: "เกิดข้อผิดพลาดในการประมวลผลไฟล์เสียง", quoteToken }],
-      quickReply
-    );
+    await line.reply(event.replyToken, [
+      { type: "text", text: "เกิดข้อผิดพลาดในการประมวลผลไฟล์เสียง", quoteToken },
+    ]);
   }
 };
 
