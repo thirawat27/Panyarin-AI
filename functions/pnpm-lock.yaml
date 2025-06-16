@@ -21,8 +21,8 @@ importers:
         specifier: ^7.1.0
         version: 7.1.0
       '@google/genai':
-        specifier: ^1.3.0
-        version: 1.3.0(@modelcontextprotocol/sdk@1.11.4)
+        specifier: ^1.5.1
+        version: 1.5.1(@modelcontextprotocol/sdk@1.11.4)
       axios:
         specifier: ^1.9.0
         version: 1.9.0
@@ -183,11 +183,14 @@ packages:
     resolution: {integrity: sha512-7/5LRgykyOfQENcm6hDKP8SX/u9XxE5YOiWOkgkwcoO+cG8xT/cyOvp9wwN3IxfdYgpHs8CE7Nq2PKX2lNaEXw==}
     engines: {node: '>=14'}
 
-  '@google/genai@1.3.0':
-    resolution: {integrity: sha512-rrMzAELX4P902FUpuWy/W3NcQ7L3q/qtCzfCmGVqIce8yWpptTF9hkKsw744tvZpwqhuzD0URibcJA95wd8QFA==}
+  '@google/genai@1.5.1':
+    resolution: {integrity: sha512-9SKpNo5iqvB622lN3tSCbeuiLGTcStRd+3muOrI9pZMpzfLDc/xC7dWIJd5kK+4AZuY28nsvQmCZe0fPj3JUew==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.11.0
+    peerDependenciesMeta:
+      '@modelcontextprotocol/sdk':
+        optional: true
 
   '@grpc/grpc-js@1.13.3':
     resolution: {integrity: sha512-FTXHdOoPbZrBjlVLHuKbDZnsTxXv2BlHF57xw6LuThXacXvtkahEPED0CKMk6obZDf65Hv4k3z62eyPNpvinIg==}
@@ -862,16 +865,16 @@ packages:
     resolution: {integrity: sha512-LDODD4TMYx7XXdpwxAVRAIAuB0bzv0s+ywFonY46k126qzQHT9ygyoa9tncmOiQmmDrik65UYsEkv3lbfqQ3yQ==}
     engines: {node: '>=14'}
 
-  gaxios@7.0.0-rc.4:
-    resolution: {integrity: sha512-fwQMwbs3o8Odl/nc/rkQJwyHeOXdderOwmybUl0gkyTdZXMK1oSTWj4Em7gSogVJsRWDeHPXLY06+e8Rkr01iw==}
+  gaxios@7.1.0:
+    resolution: {integrity: sha512-y1Q0MX1Ba6eg67Zz92kW0MHHhdtWksYckQy1KJsI6P4UlDQ8cvdvpLEPslD/k7vFkdPppMESFGTvk7XpSiKj8g==}
     engines: {node: '>=18'}
 
   gcp-metadata@6.1.1:
     resolution: {integrity: sha512-a4tiq7E0/5fTjxPAaH4jpjkSv/uCaU2p5KC6HVGrvl0cDjA8iBZv4vv1gyzlmK0ZUKqwpOyQMKzZQe3lTit77A==}
     engines: {node: '>=14'}
 
-  gcp-metadata@7.0.0-rc.1:
-    resolution: {integrity: sha512-E6c+AdIaK1LNA839OyotiTca+B2IG1nDlMjnlcck8JjXn3fVgx57Ib9i6iL1/iqN7bA3EUQdcRRu+HqOCOABIg==}
+  gcp-metadata@7.0.0:
+    resolution: {integrity: sha512-3PfRTzvT3Msu0Hy8Gf9ypxJvaClG2IB9pyH0r8QOmRBW5mUcrHgYpF4GYP+XulDbfhxEhBYtJtJJQb5S2wM+LA==}
     engines: {node: '>=18'}
 
   get-caller-file@2.0.5:
@@ -886,8 +889,8 @@ packages:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
     engines: {node: '>= 0.4'}
 
-  google-auth-library@10.0.0-rc.2:
-    resolution: {integrity: sha512-LjkDUtHV8mFFV0pDWpPTjUuAPd6WDBs2y/mTzGSmwQJkDRinOpQyu7e/0pqQoDoanKGwaQJH5729uZ+/5Uz8fw==}
+  google-auth-library@10.1.0:
+    resolution: {integrity: sha512-GspVjZj1RbyRWpQ9FbAXMKjFGzZwDKnUHi66JJ+tcjcu5/xYAP1pdlWotCuIkMwjfVsxxDvsGZXGLzRt72D0sQ==}
     engines: {node: '>=18'}
 
   google-auth-library@9.15.1:
@@ -918,8 +921,8 @@ packages:
     resolution: {integrity: sha512-pCcEwRi+TKpMlxAQObHDQ56KawURgyAf6jtIY046fJ5tIv3zDe/LEIubckAO8fj6JnAxLdmWkUfNyulQ2iKdEw==}
     engines: {node: '>=14.0.0'}
 
-  gtoken@8.0.0-rc.1:
-    resolution: {integrity: sha512-UjE/egX6ixArdcCKOkheuFQ4XN4/0gX92nd2JPVEYuRU2sWHAWuOVGnowm1fQUdQtaxqn1n8H0hOb2LCaUhJ3A==}
+  gtoken@8.0.0:
+    resolution: {integrity: sha512-+CqsMbHPiSTdtSO14O51eMNlrp9N79gmeqmXeouJOhfucAedHw9noVe/n5uJk3tbKE6a+6ZCQg3RPhVhHByAIw==}
     engines: {node: '>=18'}
 
   has-property-descriptors@1.0.2:
@@ -1463,6 +1466,10 @@ packages:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
 
+  statuses@2.0.2:
+    resolution: {integrity: sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==}
+    engines: {node: '>= 0.8'}
+
   stream-events@1.0.5:
     resolution: {integrity: sha512-E1GUzBSgvct8Jsb3v2X15pjzN1tYebtbLaMg+eBOUOAxgbLoSbT2NS91ckc5lJD1KfLjId+jXJRgo0qnV5Nerg==}
 
@@ -1637,8 +1644,8 @@ packages:
     peerDependencies:
       zod: ^3.24.1
 
-  zod@3.25.48:
-    resolution: {integrity: sha512-0X1mz8FtgEIvaxGjdIImYpZEaZMrund9pGXm3M6vM7Reba0e2eI71KPjSCGXBfwKDPwPoywf6waUKc3/tFvX2Q==}
+  zod@3.25.64:
+    resolution: {integrity: sha512-hbP9FpSZf7pkS7hRVUrOjhwKJNyampPgtXKc3AN6DsWtoHsg2Sb4SQaS4Tcay380zSwd2VPo9G9180emBACp5g==}
 
 snapshots:
 
@@ -1752,7 +1759,7 @@ snapshots:
       arrify: 2.0.1
       duplexify: 4.1.3
       extend: 3.0.2
-      google-auth-library: 10.0.0-rc.2
+      google-auth-library: 10.1.0
       html-entities: 2.6.0
       retry-request: 8.0.0
       teeny-request: 10.1.0
@@ -1830,13 +1837,14 @@ snapshots:
       - supports-color
     optional: true
 
-  '@google/genai@1.3.0(@modelcontextprotocol/sdk@1.11.4)':
+  '@google/genai@1.5.1(@modelcontextprotocol/sdk@1.11.4)':
     dependencies:
-      '@modelcontextprotocol/sdk': 1.11.4
       google-auth-library: 9.15.1
       ws: 8.18.2
-      zod: 3.25.48
-      zod-to-json-schema: 3.24.5(zod@3.25.48)
+      zod: 3.25.64
+      zod-to-json-schema: 3.24.5(zod@3.25.64)
+    optionalDependencies:
+      '@modelcontextprotocol/sdk': 1.11.4
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -1949,10 +1957,11 @@ snapshots:
       express-rate-limit: 7.5.0(express@5.1.0)
       pkce-challenge: 5.0.0
       raw-body: 3.0.0
-      zod: 3.25.48
-      zod-to-json-schema: 3.24.5(zod@3.25.48)
+      zod: 3.25.64
+      zod-to-json-schema: 3.24.5(zod@3.25.64)
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   '@mozilla/readability@0.6.0': {}
 
@@ -2085,6 +2094,7 @@ snapshots:
     dependencies:
       mime-types: 3.0.1
       negotiator: 1.0.0
+    optional: true
 
   agent-base@6.0.2:
     dependencies:
@@ -2170,6 +2180,7 @@ snapshots:
       type-is: 2.0.1
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   boolbase@1.0.0: {}
 
@@ -2238,16 +2249,19 @@ snapshots:
   content-disposition@1.0.0:
     dependencies:
       safe-buffer: 5.2.1
+    optional: true
 
   content-type@1.0.5: {}
 
   cookie-signature@1.0.6: {}
 
-  cookie-signature@1.2.2: {}
+  cookie-signature@1.2.2:
+    optional: true
 
   cookie@0.7.1: {}
 
-  cookie@0.7.2: {}
+  cookie@0.7.2:
+    optional: true
 
   cors@2.8.5:
     dependencies:
@@ -2265,6 +2279,7 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+    optional: true
 
   css-select@5.1.0:
     dependencies:
@@ -2382,15 +2397,18 @@ snapshots:
 
   eventemitter3@5.0.1: {}
 
-  eventsource-parser@3.0.2: {}
+  eventsource-parser@3.0.2:
+    optional: true
 
   eventsource@3.0.7:
     dependencies:
       eventsource-parser: 3.0.2
+    optional: true
 
   express-rate-limit@7.5.0(express@5.1.0):
     dependencies:
       express: 5.1.0
+    optional: true
 
   express@4.21.2:
     dependencies:
@@ -2454,11 +2472,12 @@ snapshots:
       router: 2.2.0
       send: 1.2.0
       serve-static: 2.2.0
-      statuses: 2.0.1
+      statuses: 2.0.2
       type-is: 2.0.1
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   extend@3.0.2: {}
 
@@ -2501,9 +2520,10 @@ snapshots:
       escape-html: 1.0.3
       on-finished: 2.4.1
       parseurl: 1.3.3
-      statuses: 2.0.1
+      statuses: 2.0.2
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   find-up-simple@1.0.1: {}
 
@@ -2571,7 +2591,8 @@ snapshots:
 
   fresh@0.5.2: {}
 
-  fresh@2.0.0: {}
+  fresh@2.0.0:
+    optional: true
 
   function-bind@1.1.2: {}
 
@@ -2589,7 +2610,7 @@ snapshots:
       - encoding
       - supports-color
 
-  gaxios@7.0.0-rc.4:
+  gaxios@7.1.0:
     dependencies:
       extend: 3.0.2
       https-proxy-agent: 7.0.6
@@ -2606,9 +2627,9 @@ snapshots:
       - encoding
       - supports-color
 
-  gcp-metadata@7.0.0-rc.1:
+  gcp-metadata@7.0.0:
     dependencies:
-      gaxios: 7.0.0-rc.4
+      gaxios: 7.1.0
       google-logging-utils: 1.1.1
       json-bigint: 1.0.0
     transitivePeerDependencies:
@@ -2634,14 +2655,14 @@ snapshots:
       dunder-proto: 1.0.1
       es-object-atoms: 1.1.1
 
-  google-auth-library@10.0.0-rc.2:
+  google-auth-library@10.1.0:
     dependencies:
       base64-js: 1.5.1
       ecdsa-sig-formatter: 1.0.11
-      gaxios: 7.0.0-rc.4
-      gcp-metadata: 7.0.0-rc.1
+      gaxios: 7.1.0
+      gcp-metadata: 7.0.0
       google-logging-utils: 1.1.1
-      gtoken: 8.0.0-rc.1
+      gtoken: 8.0.0
       jws: 4.0.0
     transitivePeerDependencies:
       - supports-color
@@ -2684,7 +2705,7 @@ snapshots:
       '@types/long': 5.0.0
       abort-controller: 3.0.0
       duplexify: 4.1.3
-      google-auth-library: 10.0.0-rc.2
+      google-auth-library: 10.1.0
       google-logging-utils: 1.1.1
       node-fetch: 3.3.2
       object-hash: 3.0.0
@@ -2708,9 +2729,9 @@ snapshots:
       - encoding
       - supports-color
 
-  gtoken@8.0.0-rc.1:
+  gtoken@8.0.0:
     dependencies:
-      gaxios: 7.0.0-rc.4
+      gaxios: 7.1.0
       jws: 4.0.0
     transitivePeerDependencies:
       - supports-color
@@ -2790,6 +2811,7 @@ snapshots:
   iconv-lite@0.6.3:
     dependencies:
       safer-buffer: 2.1.2
+    optional: true
 
   index-to-position@1.1.0: {}
 
@@ -2817,7 +2839,8 @@ snapshots:
 
   is-plain-object@5.0.0: {}
 
-  is-promise@4.0.0: {}
+  is-promise@4.0.0:
+    optional: true
 
   is-regex@1.2.1:
     dependencies:
@@ -2935,17 +2958,20 @@ snapshots:
 
   media-typer@0.3.0: {}
 
-  media-typer@1.1.0: {}
+  media-typer@1.1.0:
+    optional: true
 
   merge-descriptors@1.0.3: {}
 
-  merge-descriptors@2.0.0: {}
+  merge-descriptors@2.0.0:
+    optional: true
 
   methods@1.1.2: {}
 
   mime-db@1.52.0: {}
 
-  mime-db@1.54.0: {}
+  mime-db@1.54.0:
+    optional: true
 
   mime-types@2.1.35:
     dependencies:
@@ -2954,6 +2980,7 @@ snapshots:
   mime-types@3.0.1:
     dependencies:
       mime-db: 1.54.0
+    optional: true
 
   mime@1.6.0: {}
 
@@ -2970,7 +2997,8 @@ snapshots:
 
   negotiator@0.6.3: {}
 
-  negotiator@1.0.0: {}
+  negotiator@1.0.0:
+    optional: true
 
   node-cache@5.1.2:
     dependencies:
@@ -3036,15 +3064,18 @@ snapshots:
 
   parseurl@1.3.3: {}
 
-  path-key@3.1.1: {}
+  path-key@3.1.1:
+    optional: true
 
   path-to-regexp@0.1.12: {}
 
-  path-to-regexp@8.2.0: {}
+  path-to-regexp@8.2.0:
+    optional: true
 
   picocolors@1.1.1: {}
 
-  pkce-challenge@5.0.0: {}
+  pkce-challenge@5.0.0:
+    optional: true
 
   possible-typed-array-names@1.1.0: {}
 
@@ -3120,6 +3151,7 @@ snapshots:
   qs@6.14.0:
     dependencies:
       side-channel: 1.1.0
+    optional: true
 
   range-parser@1.2.1: {}
 
@@ -3136,6 +3168,7 @@ snapshots:
       http-errors: 2.0.0
       iconv-lite: 0.6.3
       unpipe: 1.0.0
+    optional: true
 
   read-package-up@11.0.0:
     dependencies:
@@ -3191,6 +3224,7 @@ snapshots:
       path-to-regexp: 8.2.0
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   safe-buffer@5.2.1: {}
 
@@ -3243,9 +3277,10 @@ snapshots:
       ms: 2.1.3
       on-finished: 2.4.1
       range-parser: 1.2.1
-      statuses: 2.0.1
+      statuses: 2.0.2
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   serve-static@1.16.2:
     dependencies:
@@ -3264,6 +3299,7 @@ snapshots:
       send: 1.2.0
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   set-function-length@1.2.2:
     dependencies:
@@ -3307,8 +3343,10 @@ snapshots:
   shebang-command@2.0.0:
     dependencies:
       shebang-regex: 3.0.0
+    optional: true
 
-  shebang-regex@3.0.0: {}
+  shebang-regex@3.0.0:
+    optional: true
 
   side-channel-list@1.0.0:
     dependencies:
@@ -3359,6 +3397,9 @@ snapshots:
   spdx-license-ids@3.0.21: {}
 
   statuses@2.0.1: {}
+
+  statuses@2.0.2:
+    optional: true
 
   stream-events@1.0.5:
     dependencies:
@@ -3424,6 +3465,7 @@ snapshots:
       content-type: 1.0.5
       media-typer: 1.1.0
       mime-types: 3.0.1
+    optional: true
 
   uhyphen@0.2.0: {}
 
@@ -3494,6 +3536,7 @@ snapshots:
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
+    optional: true
 
   wrap-ansi@7.0.0:
     dependencies:
@@ -3524,8 +3567,8 @@ snapshots:
   yocto-queue@0.1.0:
     optional: true
 
-  zod-to-json-schema@3.24.5(zod@3.25.48):
+  zod-to-json-schema@3.24.5(zod@3.25.64):
     dependencies:
-      zod: 3.25.48
+      zod: 3.25.64
 
-  zod@3.25.48: {}
+  zod@3.25.64: {}
