@@ -69,7 +69,7 @@ User Input: ${text}`;
     try {
       // เรียกใช้โมเดลเพื่อสร้างเนื้อหาจาก prompt
       const response = await this.ai.models.generateContent({
-        model: "gemini-2.0-flash",
+        model: "gemini-2.5-flash",
         contents: [prompt],
         config: {
           // เปลี่ยน key จาก googleSearchRetrieval เป็น googleSearch
