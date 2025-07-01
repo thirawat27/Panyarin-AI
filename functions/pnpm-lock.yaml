@@ -21,10 +21,10 @@ importers:
         specifier: ^7.1.0
         version: 7.1.0
       '@google/genai':
-        specifier: ^1.2.0
-        version: 1.5.1
+        specifier: ^1.7.0
+        version: 1.7.0
       axios:
-        specifier: ^1.9.0
+        specifier: ^1.10.0
         version: 1.10.0
       firebase-admin:
         specifier: ^13.4.0
@@ -186,8 +186,8 @@ packages:
     resolution: {integrity: sha512-7/5LRgykyOfQENcm6hDKP8SX/u9XxE5YOiWOkgkwcoO+cG8xT/cyOvp9wwN3IxfdYgpHs8CE7Nq2PKX2lNaEXw==}
     engines: {node: '>=14'}
 
-  '@google/genai@1.5.1':
-    resolution: {integrity: sha512-9SKpNo5iqvB622lN3tSCbeuiLGTcStRd+3muOrI9pZMpzfLDc/xC7dWIJd5kK+4AZuY28nsvQmCZe0fPj3JUew==}
+  '@google/genai@1.7.0':
+    resolution: {integrity: sha512-s/OZLkrIfBwc+SFFaZoKdEogkw4in0YRTGc4Q483jnfchNBWzrNe560eZEfGJHQRPn6YfzJgECCx0sqEOMWvYw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.11.0
@@ -1708,7 +1708,7 @@ snapshots:
       - supports-color
     optional: true
 
-  '@google/genai@1.5.1':
+  '@google/genai@1.7.0':
     dependencies:
       google-auth-library: 9.15.1
       ws: 8.18.2
