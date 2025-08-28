@@ -21,8 +21,8 @@ importers:
         specifier: ^7.2.0
         version: 7.2.0
       '@google/genai':
-        specifier: ^1.12.0
-        version: 1.12.0
+        specifier: ^1.15.0
+        version: 1.15.0
       axios:
         specifier: ^1.11.0
         version: 1.11.0
@@ -186,8 +186,8 @@ packages:
     resolution: {integrity: sha512-7/5LRgykyOfQENcm6hDKP8SX/u9XxE5YOiWOkgkwcoO+cG8xT/cyOvp9wwN3IxfdYgpHs8CE7Nq2PKX2lNaEXw==}
     engines: {node: '>=14'}
 
-  '@google/genai@1.12.0':
-    resolution: {integrity: sha512-JBkQsULVexdM9zY4iXbm3A2dJ7El/hSPGCnxuRWPJNgeqcfYuyUnPTSy+I/v+MvTbz/occVmONSD6wn+17QLkg==}
+  '@google/genai@1.15.0':
+    resolution: {integrity: sha512-4CSW+hRTESWl3xVtde7pkQ3E+dDFhDq+m4ztmccRctZfx1gKy3v0M9STIMGk6Nq0s6O2uKMXupOZQ1JGorXVwQ==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@modelcontextprotocol/sdk': ^1.11.0
@@ -1702,7 +1702,7 @@ snapshots:
       - supports-color
     optional: true
 
-  '@google/genai@1.12.0':
+  '@google/genai@1.15.0':
     dependencies:
       google-auth-library: 9.15.1
       ws: 8.18.3
